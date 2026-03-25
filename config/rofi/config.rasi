@@ -16,4 +16,6 @@ configuration {
 
     kb-tab: "";
     kb-backtab: "";
+
+    kb-remove-char-back: "BackSpace";
 }

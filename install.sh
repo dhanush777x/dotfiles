@@ -387,6 +387,7 @@ install_packages() {
         fzf-tab-git
         bzmenu
         pyenv
+        papirus-folders-catppuccin-git
     )
 
     # ── Chaotic-AUR exclusive packages ───────────────────────
@@ -502,6 +503,43 @@ install_slidefx() {
     git clone "$SLIDEFX_REPO" "$tmpdir/bspwm-slidefx"
     (cd "$tmpdir/bspwm-slidefx" && make install)
     ok "bspwm-slidefx installed"
+}
+
+# ================================================================
+# INSTALL CATPPUCCIN PAPIRUS ICONS
+# ================================================================
+install_catppuccin_papirus() {
+    clear
+    logo "Installing Catppuccin Papirus"
+    sleep 1
+
+    # Skip if already installed (idempotent)
+    if find /usr/share/icons/Papirus-Dark -name "folder-cat-mocha-lavender.svg" -print -quit | grep -q .; then
+        ok "Catppuccin Papirus already installed, skipping"
+        return 0
+    fi
+
+    log "Cloning Catppuccin Papirus repo..."
+
+    local tmpdir
+    tmpdir=$(mktemp -d)
+    trap_add "rm -rf '${tmpdir}'"
+
+    if git clone --depth=1 https://github.com/catppuccin/papirus-folders.git "$tmpdir"; then
+        log "Installing Catppuccin folder icons..."
+
+        if sudo cp -r "$tmpdir/src/"* /usr/share/icons/Papirus-Dark/; then
+            ok "Catppuccin Papirus icons installed"
+        else
+            warn "Failed to copy Catppuccin icons"
+        fi
+    else
+        warn "Failed to clone Catppuccin Papirus repo"
+    fi
+
+    gtk-update-icon-cache /usr/share/icons/Papirus-Dark 2>/dev/null || true
+
+    sleep 2
 }
 
 install_custom_tools() {
@@ -652,6 +690,19 @@ deploy_dotfiles() {
     # .icons
     if [ -d "$DOTFILES_DIR/home/.icons" ]; then
         ln -sfn "$DOTFILES_DIR/home/.icons" "$HOME/.icons" && ok "Linked: ~/.icons"
+    fi
+
+    # Apply Catppuccin Papirus accent
+    command -v papirus-folders &>/dev/null || warn "papirus-folders not installed"
+
+    log "Applying Catppuccin Papirus (Mocha Lavender)..."
+
+    if command -v papirus-folders &>/dev/null; then
+        papirus-folders -C cat-mocha-lavender --theme Papirus-Dark \
+            >/dev/null 2>&1 && ok "Papirus folders set to Catppuccin Lavender" \
+            || warn "Failed to apply Catppuccin Papirus accent"
+    else
+        warn "papirus-folders not found — skipping icon accent setup"
     fi
 
     # Local bin scripts
@@ -815,6 +866,7 @@ main() {
     system_update
 
     install_packages
+    install_catppuccin_papirus
     enable_services      # MPD user service deferred to after dotfiles deploy
     install_custom_tools
 
