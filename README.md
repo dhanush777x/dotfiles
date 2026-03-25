@@ -15,7 +15,7 @@
 
 ---
 
-## About
+## 🧠 About
 
 This repository contains my personal bspwm dotfiles, built with a strong focus on simplicity, consistency, and keyboard-driven productivity. The setup is intentionally minimal, removing unnecessary complexity while keeping everything fast, predictable, and easy to use.
 
@@ -31,7 +31,7 @@ This setup prioritizes:
 
 ---
 
-## Highlights
+## 🚀 Highlights
 
 - **Single theme** - Catppuccin Mocha only. No theme-switcher overhead, no extra assets.
 - **Keyboard-first** - the entire workflow is designed to minimize mouse usage. Window management, launching apps, media controls, Network Management, power options - all on the keyboard.
@@ -41,7 +41,7 @@ This setup prioritizes:
 
 ---
 
-## Keybindings
+## ⌨️ Keybindings
 
 Don't want to dig through config files? Just press:
 
@@ -53,7 +53,7 @@ This opens a searchable keybindings viewer - you can browse and search all short
 
 ---
 
-## Installation
+## ⚙️ Installation
 
 > **Requires an Arch-based system.**  
 > Do **not** run as root.
@@ -80,7 +80,7 @@ The installer will walk you through everything interactively. Here's what it doe
 
 ---
 
-## Stack
+## 🧩 Stack
 
 | Component            | Tool                      |
 | -------------------- | ------------------------- |
@@ -97,12 +97,12 @@ The installer will walk you through everything interactively. Here's what it doe
 | Music                | mpd + ncmpcpp             |
 | Theme                | Catppuccin Mocha          |
 | Icons                | Papirus                   |
-| Power Menu           | pwrx                      |
+| Power Utility        | pwrx                      |
 | Workspace Animations | bspwm-slidefx             |
 
 ---
 
-## Preview
+## 🖼️ Preview
 
 #### 🧠 System / Core
 
@@ -178,11 +178,11 @@ The installer will walk you through everything interactively. Here's what it doe
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 - If you encounter any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
 
-## Credits
+## 🙌 Credits
 
 - **[gh0stzk](https://github.com/gh0stzk/)** - These dotfiles were inspired by his multi-theme bspwm setup, which served as a strong foundation. If you're looking for a more feature-rich and theme-diverse configuration, definitely check out his repository.
 - **[Catppuccin](https://github.com/catppuccin/catppuccin)** - the only colorscheme that matters.
