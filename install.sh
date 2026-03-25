@@ -663,6 +663,24 @@ deploy_dotfiles() {
         done
     fi
 
+    # Install GTK Themes
+    if [ -d "$DOTFILES_DIR/config/themes" ]; then
+        log "Installing themes to ~/.themes..."
+        mkdir -p "$HOME/.themes"
+
+        for theme in "$DOTFILES_DIR/config/themes/"*/; do
+            theme_name="$(basename "$theme")"
+            target="$HOME/.themes/$theme_name"
+
+            if [ -d "$target" ]; then
+                log "Theme exists, skipping: $theme_name"
+                continue
+            fi
+
+            cp -r "$theme" "$target" && ok "Installed theme: $theme_name"
+        done
+    fi
+
     # Font cache
     log "Refreshing font cache..."
     fc-cache -r
