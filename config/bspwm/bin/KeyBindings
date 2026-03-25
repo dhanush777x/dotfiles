@@ -1,0 +1,25 @@
+
+#!/bin/bash
+
+# Paths
+SXHKDRC="$HOME/.config/bspwm/config/sxhkdrc"
+ROFI_THEME="$HOME/.config/bspwm/config/rofi-themes/Keybindings.rasi"
+
+# Check if sxhkdrc exists
+if [[ ! -f "$SXHKDRC" ]]; then
+    notify-send "sxhkd" "sxhkdrc not found!"
+    exit 1
+fi
+
+# Extract and format shortcuts with padding
+SHORTCUTS=$(awk '
+    BEGIN { desc="" }
+    /^#/ { desc=substr($0, 3); next }
+    NF && desc { printf "%-40s | %s\n", desc, $0; desc="" }
+' "$SXHKDRC" | column -t -s "|")
+
+# Debugging: Print output to verify
+echo "$SHORTCUTS" > /tmp/shortcuts_debug.txt
+
+# Send to rofi
+echo "$SHORTCUTS" | rofi -dmenu -i -p "Shortcuts" -theme "$ROFI_THEME"

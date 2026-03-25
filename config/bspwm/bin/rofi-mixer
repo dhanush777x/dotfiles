@@ -1,0 +1,14 @@
+#!/bin/env sh
+
+BASEDIR="$HOME/.config/bspwm"
+
+rofi -theme "$BASEDIR/config/rofi-themes/Mixer.rasi" \
+-kb-custom-16 "Ctrl+equal" \
+-kb-custom-17 "Alt+m" \
+-kb-custom-18 "minus,underscore" \
+-kb-custom-19 "equal,plus" \
+-show rofi-sink-mixer \
+-modi "rofi-sink-mixer:$BASEDIR/bin/rofi-mixer.py --type sink,rofi-source-mixer:$BASEDIR/bin/rofi-mixer.py --type source" "$@"
+-matching fuzzy \
+-i \
+"$@"
