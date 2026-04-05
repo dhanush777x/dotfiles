@@ -22,17 +22,15 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Window Rules
 # --- Super Productivity → Desktop 8 ---
 #
-bspc rule -a superProductivity \
-    state=floating \
-    sticky=on \
-    focus=on \
-    rectangle=70%x35%+15%+0%
 
 # --- Kitty → Desktop 3 ---
 #
 #bspc rule -a kitty desktop='^3'
 
 bspc rule -a Spotify sticky=on follow=on
+bspc rule -a scratch-vit state=floating sticky=on
+bspc rule -a scratch-tuify state=floating sticky=on
+bspc rule -a scratch-firefox state=floating sticky=on
 
 #  ╦ ╦╔═╗╦═╗╦╔═╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗
 #  ║║║║ ║╠╦╝╠╩╗╚═╗╠═╝╠═╣║  ║╣ ╚═╗

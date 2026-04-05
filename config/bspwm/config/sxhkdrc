@@ -79,17 +79,17 @@ ctrl + alt + o
 ctrl + alt + p
     OpenApps --pwm
 
-# Scratchpad Todoist Client (doist)
+# Tasks (vit)
 ctrl + alt + m
-    flatpak run com.super_productivity.SuperProductivity
+    tdrop -n vit -ma -w 65% -h 65% -x 18% -y 18% kitty --class scratch-vit -e vit
 
-# Scratchpad Firefox
+# Firefox
 ctrl + alt + n
-    tdrop -ma -w 75% -h 85% -x 12% -y 8% --class=firefox firefox --class=scratch
+    tdrop -n firefox -ma -w 75% -h 85% -x 12% -y 8% firefox --class=scratch-firefox
 
-# Scratchpad Spotify
+# Spotify (tuify)
 ctrl + alt + i
-     tdrop -ma -w 70% -h 75% -x 15% -y 15% -s dropdown spotify
+    tdrop -n tuify -ma -w 65% -h 65% -x 18% -y 18% kitty --class scratch-tuify -e tuify
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {p,r,q,l,k}
